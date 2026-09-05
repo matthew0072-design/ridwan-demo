@@ -1,0 +1,454 @@
+ [
+{
+"id": 1,
+"name": "Coinbase",
+"domain": "coinbase.com",
+"logo": "/asset/img/wallet/image_1.png"},
+{
+"id": 2,
+"name": "Ledger Live",
+"domain": "ledger.com",
+"logo": "/asset/img/wallet/image_2.png"},
+{
+"id": 3,
+"name": "Brave Wallet",
+"domain": "",
+"logo": "/asset/img/wallet/image_3.png"},
+{
+"id": 4,
+"name": "MetaMask",
+"domain": "metamask.io",
+"logo": "/asset/img/wallet/image_4.jpg"},
+{
+"id": 5,
+"name": "Trust Wallet",
+"domain": "trustwallet.com",
+"logo": "/asset/img/wallet/image_5.jpeg"},
+{
+"id": 6,
+"name": "Wallet Connect",
+"domain": "walletconnect.com",
+"logo": "/asset/img/wallet/image_6.jpg"},
+{
+"id": 7,
+"name": "Electrum",
+"domain": "electrum.org",
+"logo": "/asset/img/wallet/image_7.png"},
+{
+"id": 8,
+"name": "Internet Identity",
+"domain": "",
+"logo": "/asset/img/wallet/internet-identity.svg"},
+{
+"id": 9,
+"name": "Plug",
+"domain": "",
+"logo": "/asset/img/wallet/image_9.png"},
+{
+"id": 10,
+"name": "Stoic Wallet",
+"domain": "",
+"logo": "/asset/img/stoic-wallet.svg"},
+{
+"id": 11,
+"name": "ICPSwap Wallet",
+"domain": "",
+"logo": "/asset/img/wallet/image_11.png"},
+{
+"id": 12,
+"name": "NFID",
+"domain": "",
+"logo": "/asset/img/wallet/image_12.png"},
+{
+"id": 13,
+"name": "Bitfinity Wallet",
+"domain": "",
+"logo": "/asset/img/wallet/image_13.png"},
+{
+"id": 14,
+"name": "AstroX Me",
+"domain": "",
+"logo": "/asset/img/wallet/image_14.png"},
+{
+"id": 15,
+"name": "Solflare",
+"domain": "",
+"logo": "/asset/img/wallet/image_8.webp"},
+{
+"id": 16,
+"name": "Nami",
+"domain": "",
+"logo": "/asset/img/wallet/image_9.png"},
+{
+"id": 17,
+"name": "Yoroi",
+"domain": "",
+"logo": "/asset/img/wallet/image_10.png"},
+{
+"id": 18,
+"name": "Moonstake",
+"domain": "",
+"logo": "/asset/img/wallet/image_11.png"},
+{
+"id": 19,
+"name": "Xverse",
+"domain": "",
+"logo": "/asset/img/wallet/image_12.png"},
+{
+"id": 20,
+"name": "Venom",
+"domain": "",
+"logo": "/asset/img/wallet/image_13.png"},
+{
+"id": 21,
+"name": "Uniswap",
+"domain": "",
+"logo": "/asset/img/wallet/image_14.png"},
+{
+"id": 22,
+"name": "Xpla Wallet",
+"domain": "",
+"logo": "/asset/img/wallet/image_15.png"},
+{
+"id": 23,
+"name": "Exodus",
+"domain": "exodus.com",
+"logo": "/asset/img/wallet/image_16.png"},
+{
+"id": 24,
+"name": "Phantom",
+"domain": "phantom.app",
+"logo": "/asset/img/wallet/image_17.jpg"},
+{
+"id": 25,
+"name": "Hashpack",
+"domain": "hashpack.app",
+"logo": "/asset/img/wallet/image_18.jpg"},
+{
+"id": 26,
+"name": "Keplr",
+"domain": "keplr.app",
+"logo": "/asset/img/wallet/image_19.png"},
+{
+"id": 27,
+"name": "Klever",
+"domain": "klever.io",
+"logo": "/asset/img/wallet/image_20.png"},
+{
+"id": 28,
+"name": "Fantom",
+"domain": "fantom.foundation",
+"logo": "/asset/img/wallet/image_21.png"},
+{
+"id": 29,
+"name": "Blade",
+"domain": "bladewallet.io",
+"logo": "/asset/img/wallet/image_22.png"},
+{
+"id": 30,
+"name": "Cosmos",
+"domain": "cosmos.network",
+"logo": "/asset/img/wallet/image_23.png"},
+{
+"id": 31,
+"name": "Avax",
+"domain": "wallet.avax.network",
+"logo": "/asset/img/wallet/image_24.png"},
+{
+"id": 32,
+"name": "Stacks wallet",
+"domain": "stack.co",
+"logo": "/asset/img/wallet/image_25.png"},
+{
+"id": 33,
+"name": "Terra station",
+"domain": "terra.money",
+"logo": "/asset/img/wallet/image_26.png"},
+{
+"id": 34,
+"name": "Polygon Wallet",
+"domain": "polygon.technology",
+"logo": "/asset/img/wallet/image_27.jpg"},
+{
+"id": 35,
+"name": "Rainbow",
+"domain": "rainbow.me",
+"logo": "/asset/img/wallet/image_28.jpg"},
+{
+"id": 36,
+"name": "Bitpay",
+"domain": "bitpay.com",
+"logo": "/asset/img/wallet/image_29.jpg"},
+{
+"id": 37,
+"name": "Walleth",
+"domain": "walleth.org",
+"logo": "/asset/img/wallet/image_30.jpg"},
+{
+"id": 38,
+"name": "Argent",
+"domain": "argent.xyz",
+"logo": "/asset/img/wallet/image_31.jpg"},
+{
+"id": 39,
+"name": "Huobi Wallet",
+"domain": "huobiwallet.com",
+"logo": "/asset/img/wallet/image_32.jpg"},
+{
+"id": 40,
+"name": "Encrypted Ink",
+"domain": "encrypted.ink",
+"logo": "/asset/img/wallet/image_33.jpg"},
+{
+"id": 41,
+"name": "Compound",
+"domain": "compound.finance",
+"logo": "/asset/img/wallet/image_34.jpg"},
+{
+"id": 42,
+"name": "Polkadot",
+"domain": "polkadot.network",
+"logo": "/asset/img/wallet/image_35.jpg"},
+{
+"id": 43,
+"name": "lotex",
+"domain": "lotex.io",
+"logo": "/asset/img/wallet/image_36.jpg"},
+{
+"id": 44,
+"name": "Coin98",
+"domain": "coin98.com",
+"logo": "/asset/img/wallet/image_37.jpg"},
+{
+"id": 45,
+"name": "Crypto.com | Defi Wallet",
+"domain": "crypto.com",
+"logo": "/asset/img/wallet/image_38.jpg"},
+{
+"id": 46,
+"name": "Token Pocket",
+"domain": "tokenpocket.app",
+"logo": "/asset/img/wallet/image_39.jpg"},
+{
+"id": 47,
+"name": "Math Wallet",
+"domain": "mathwallet.org",
+"logo": "/asset/img/wallet/image_40.jpg"},
+{
+"id": 48,
+"name": "1inch",
+"domain": "1inch.io",
+"logo": "/asset/img/wallet/image_41.jpg"},
+{
+"id": 49,
+"name": "Dharma",
+"domain": "dharma.io",
+"logo": "/asset/img/wallet/image_42.jpg"},
+{
+"id": 50,
+"name": "Trust Vault",
+"domain": "trustology.io",
+"logo": "/asset/img/wallet/image_43.jpg"},
+{
+"id": 51,
+"name": "MYKEY",
+"domain": "mykey.org",
+"logo": "/asset/img/wallet/image_44.jpg"},
+{
+"id": 52,
+"name": "Atomic",
+"domain": "atomicwallet.io",
+"logo": "/asset/img/wallet/image_45.jpg"},
+{
+"id": 53,
+"name": "CoolWallet S",
+"domain": "coolwallet.io",
+"logo": "/asset/img/wallet/image_46.jpg"},
+{
+"id": 54,
+"name": "Nash",
+"domain": "nash.io",
+"logo": "/asset/img/wallet/image_47.jpg"},
+{
+"id": 55,
+"name": "Coinomic",
+"domain": "coinomic.io",
+"logo": "/asset/img/wallet/image_48.jpg"},
+{
+"id": 56,
+"name": "GridPlus",
+"domain": "gridplus.io",
+"logo": "/asset/img/wallet/image_49.jpg"},
+{
+"id": 57,
+"name": "Tokenary",
+"domain": "tokenary.io",
+"logo": "/asset/img/wallet/image_50.jpg"},
+{
+"id": 58,
+"name": "Safepal",
+"domain": "safepal.io",
+"logo": "/asset/img/wallet/image_51.jpg"},
+{
+"id": 59,
+"name": "Infinito",
+"domain": "infinitowallet.io",
+"logo": "/asset/img/wallet/image_52.jpg"},
+{
+"id": 60,
+"name": "Wallet.io",
+"domain": "wallet.io",
+"logo": "/asset/img/wallet/image_53.jpg"},
+{
+"id": 61,
+"name": "Ownbit",
+"domain": "ownbit.io",
+"logo": "/asset/img/wallet/image_54.jpg"},
+{
+"id": 62,
+"name": "EasyPocket",
+"domain": "easypocket.app",
+"logo": "/asset/img/wallet/image_55.jpg"},
+{
+"id": 63,
+"name": "Bridge Wallet",
+"domain": "mypelerin.com",
+"logo": "/asset/img/wallet/image_56.jpg"},
+{
+"id": 64,
+"name": "ViaWallet",
+"domain": "viawallet.com",
+"logo": "/asset/img/wallet/image_57.jpg"},
+{
+"id": 65,
+"name": "BitKeep",
+"domain": "bitkeep.com",
+"logo": "/asset/img/wallet/image_58.jpg"},
+{
+"id": 66,
+"name": "Unstoppable Wallet",
+"domain": "unstoppable.money",
+"logo": "/asset/img/wallet/image_59.jpg"},
+{
+"id": 67,
+"name": "HaloDefi Wallet",
+"domain": "halodefi.org",
+"logo": "/asset/img/wallet/image_60.jpg"},
+{
+"id": 68,
+"name": "Dok Wallet",
+"domain": "dokwallet.com",
+"logo": "/asset/img/wallet/image_62.jpg"},
+{
+"id": 69,
+"name": "Cello Wallet",
+"domain": "cellowallet.app",
+"logo": "/asset/img/wallet/image_62.jpg"},
+{
+"id": 70,
+"name": "CoinUs",
+"domain": "coinus.io",
+"logo": "/asset/img/wallet/image_63.jpg"},
+{
+"id": 71,
+"name": "Valora",
+"domain": "valloraapp.com",
+"logo": "/asset/img/wallet/image_64.jpg"},
+{
+"id": 72,
+"name": "Trustee Wallet",
+"domain": "trusteeglobal.com",
+"logo": "/asset/img/wallet/image_65.jpg"},
+{
+"id": 73,
+"name": "Guarda Wallet",
+"domain": "guarda.com",
+"logo": "/asset/img/wallet/image_66.jpg"},
+{
+"id": 74,
+"name": "Maiar Wallet",
+"domain": "maiar.com",
+"logo": "/asset/img/wallet/image_67.png"},
+{
+"id": 75,
+"name": "Jade Wallet",
+"domain": "jadewallet.io",
+"logo": "/asset/img/wallet/image_68.jpg"},
+{
+"id": 76,
+"name": "PlasmaPay",
+"domain": "plasmapay.com",
+"logo": "/asset/img/wallet/image_69.jpg"},
+{
+"id": 77,
+"name": "O3Wallet",
+"domain": "o3.network",
+"logo": "/asset/img/wallet/image_70.jpg"},
+{
+"id": 78,
+"name": "HashKey Me",
+"domain": "me.hashkey.com",
+"logo": "/asset/img/wallet/image_71.jpg"},
+{
+"id": 79,
+"name": "RWallet",
+"domain": "rsk.co",
+"logo": "/asset/img/wallet/image_72.jpg"},
+{
+"id": 80,
+"name": "Flare Wallet",
+"domain": "flarewallet.io",
+"logo": "/asset/img/wallet/image_73.jpg"},
+{
+"id": 81,
+"name": "KyberSwap",
+"domain": "kyberswap.com",
+"logo": "/asset/img/wallet/image_74.jpg"},
+{
+"id": 82,
+"name": "Atoken Wallet",
+"domain": "atoken.com",
+"logo": "/asset/img/wallet/image_75.jpg"},
+{
+"id": 83,
+"name": "Tongue Wallet",
+"domain": "tongue.fi",
+"logo": "/asset/img/wallet/image_76.jpg"},
+{
+"id": 84,
+"name": "XinFin XDC Network",
+"domain": "xinfin.io",
+"logo": "/asset/img/wallet/image_77.jpg"},
+{
+"id": 85,
+"name": "Talken Wallet",
+"domain": "talken.io",
+"logo": "/asset/img/wallet/image_78.jpg"},
+{
+"id": 86,
+"name": "KEYRING PRO",
+"domain": "keyring.app",
+"logo": "/asset/img/wallet/image_79.jpg"},
+{
+"id": 87,
+"name": "Midas Wallet",
+"domain": "midasprotocol.io",
+"logo": "/asset/img/wallet/image_80.jpg"},
+{
+"id": 88,
+"name": "AT.Wallet",
+"domain": "authentrend.com",
+"logo": "/asset/img/wallet/image_81.jpg"},
+{
+"id": 89,
+"name": "ImToken",
+"domain": "token.im",
+"logo": "/asset/img/wallet/image_82.jpg"},
+{
+"id": 90,
+"name": "Others",
+"domain": "",
+"logo": "/asset/img/wallet/image_82.jpg"}]
+
+
+
