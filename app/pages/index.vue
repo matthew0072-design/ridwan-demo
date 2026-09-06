@@ -2,13 +2,91 @@
   <div class="min-h-screen bg-[#232538] text-white">
 
     <!-- HEADER -->
-    <header class="fixed inset-x-0 top-0 z-50 h-[66px] bg-black">
-      <div class="flex h-full w-full items-center justify-between px-4 py-2">
+    <header class="fixed inset-x-0 top-0 z-50 h-24 md:h-[66px] bg-black">
+
+      <!-- ===================================================== -->
+      <!-- MOBILE HEADER — FROM YOUR SECOND VERSION -->
+      <!-- ===================================================== -->
+
+      <div class="relative mx-auto h-full w-full px-3 lg:hidden">
+
+        <!-- MOBILE TOP ROW -->
+        <div class="flex pt-4 h-full">
+
+          <!-- Logo + Brand -->
+          <a
+              href="#"
+              class="flex shrink-0 no-underline"
+          >
+            <svg
+                class="h-10 w-10 text-white"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+              <path
+                  fill="currentColor"
+                  d="M12 .7a11.3 11.3 0 0 0-3.58 22.02c.57.1.78-.25.78-.55v-2.02c-3.17.69-3.84-1.34-3.84-1.34-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.24 3.32.95.1-.74.4-1.24.73-1.53-2.53-.29-5.19-1.27-5.19-5.65 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.13 1.17a10.9 10.9 0 0 1 5.7 0c2.17-1.48 3.13-1.17 3.13-1.17.62 1.57.23 2.73.11 3.02.73.8 1.18 1.82 1.18 3.07 0 4.39-2.67 5.35-5.21 5.64.41.36.78 1.06.78 2.14v3.18c0 .3.21.66.79.55A11.3 11.3 0 0 0 12 .7Z"
+              />
+            </svg>
+
+            <span class="ml-2 whitespace-nowrap text-xl font-normal text-[#a5a8a9]">
+          GitHub Blockchain Support
+        </span>
+          </a>
+
+          <!-- MOBILE CONNECT -->
+          <button
+              type="button"
+              @click="homeWalletModal"
+              class="ml-auto mr-3 flex pt-1 shrink-0 cursor-pointer text-sm text-white no-underline"
+          >
+            Connect
+          </button>
+
+        </div>
+
+
+        <!-- MOBILE HAMBURGER -->
+        <button
+            type="button"
+            class="absolute bottom-4 left-3 pt-14 flex h-7 w-7 items-center justify-center border-0 bg-transparent p-0"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+            aria-label="Toggle navigation"
+        >
+      <span class="flex flex-col gap-[4px]">
+        <span class="block h-[1px] w-[18px] bg-white"></span>
+        <span class="block h-[1px] w-[18px] bg-white"></span>
+        <span class="block h-[1px] w-[18px] bg-white"></span>
+      </span>
+        </button>
+
+
+        <!-- MOBILE DROPDOWN -->
+        <div
+            v-if="mobileMenuOpen"
+            class="absolute left-0 right-0 top-[66px] border-t border-[#222] bg-black px-4 py-3"
+        >
+          <a
+              href="javascript:void(0)"
+              class="block py-2 text-[10px] text-white no-underline"
+          >
+            Talk to an Agent
+          </a>
+        </div>
+
+      </div>
+
+
+      <!-- ===================================================== -->
+      <!-- DESKTOP HEADER — FROM YOUR FIRST VERSION -->
+      <!-- ===================================================== -->
+
+      <div class="hidden h-full w-full items-center justify-between px-4 py-2 lg:flex">
 
         <!-- Logo + Brand -->
         <a
             href="#"
-            class="flex h-full shrink-0 items-center no-underline ml-16"
+            class="ml-16 flex h-full shrink-0 items-center no-underline"
         >
           <svg
               class="h-10 w-10 text-white"
@@ -22,37 +100,13 @@
           </svg>
 
           <span class="ml-2 whitespace-nowrap text-xl font-normal text-[#a5a8a9]">
-    GitHub Blockchain Support
-  </span>
+        GitHub Blockchain Support
+      </span>
         </a>
 
 
-        <!-- MOBILE CONNECT -->
-        <button
-            @click="homeWalletModal"
-            class="ml-auto mr-3 flex h-10 items-center cursor-pointer text-[10px] text-[#aaa] no-underline lg:hidden"
-        >
-          Connect
-        </button>
-
-
-        <!-- MOBILE MENU BUTTON -->
-        <button
-            type="button"
-            class="flex h-8 w-8 items-center justify-center rounded border-0 bg-transparent p-1 text-white lg:hidden"
-            @click="mobileMenuOpen = !mobileMenuOpen"
-            aria-label="Toggle navigation"
-        >
-          <span class="flex flex-col gap-[4px]">
-            <span class="block h-[1px] w-[18px] bg-white"></span>
-            <span class="block h-[1px] w-[18px] bg-white"></span>
-            <span class="block h-[1px] w-[18px] bg-white"></span>
-          </span>
-        </button>
-
-
         <!-- DESKTOP NAVIGATION -->
-        <nav class="hidden mr-24 items-center lg:flex">
+        <nav class="mr-24 flex items-center">
 
           <a
               href="javascript:void(0)"
@@ -63,27 +117,13 @@
 
           <button
               @click="homeWalletModal"
-              class="ml-[14px] flex items-center cursor-pointer text-base text-[#fff] no-underline px-2.5 py-[15px]"
+              class="ml-[14px] flex items-center cursor-pointer px-2.5 py-[15px] text-base text-[#fff] no-underline"
           >
             Connect
           </button>
 
         </nav>
 
-      </div>
-
-
-      <!-- MOBILE DROPDOWN -->
-      <div
-          v-if="mobileMenuOpen"
-          class="border-t border-[#222] bg-black px-4 py-3 lg:hidden"
-      >
-        <a
-            href="javascript:void(0)"
-            class="block py-2 text-[10px] text-white no-underline"
-        >
-          Talk to an Agent
-        </a>
       </div>
 
     </header>
@@ -94,9 +134,9 @@
       <section
           class="relative overflow-hidden bg-[linear-gradient(105deg,#4d45a9_0%,#41419b_32%,#292b43_62%,#232538_100%)]"
       >
-        <div class="mx-auto w-full max-w-[700px] relative flex justify-center items-center flex-col h-[450px] px-4 pb-[85px] pt-[42px]">
+        <div class="mx-auto w-full max-w-[700px] relative flex justify-center items-center flex-col h-[450px] px-12 md:px-4 pb-[85px] pt-32 md:pt-[42px]">
 
-          <h1 class="text-center text-[32px] font-bold leading-[1.2] text-white">
+          <h1 class="text-center text-2xl md:text-[32px] font-bold leading-9 text-white">
             Hello, What can we help you with?
           </h1>
 
@@ -116,13 +156,13 @@
             <input
                 type="text"
                 placeholder="Enter the search item here..."
-                class="h-full w-full border-0 bg-transparent pr-3.5 text-base text-white outline-none placeholder:text-[#888]"
+                class="h-full w-full p-4 md:p-1 border-0 bg-transparent pr-3.5 text-base text-white outline-none placeholder:text-[#888]"
             />
           </div>
 
           <!-- POPULAR LINKS -->
           <div
-              class="mt-14 text-center text-base leading-8 text-white w-7/8"
+              class="md:mt-14 mt-10 text-center text-base leading-8 text-white md:w-7/8"
           >
             Popular Links:
 
@@ -144,12 +184,15 @@
 
         <!-- GLOW -->
         <div
-            class="pointer-events-none absolute
+            class="hidden md:block pointer-events-none absolute
          -bottom-[180px] -left-[190px]
          h-[520px] w-[520px]
          rounded-full
          bg-[radial-gradient(circle_at_38%_65%,#e3a8ff_0%,#d89cff_25%,rgba(174,119,255,.65)_45%,rgba(91,72,190,.25)_65%,transparent_78%)]
          blur-[18px]"
+        ></div>
+        <div
+            class="md:hidden pointer-events-none absolute -bottom-[75px] -left-[85px] h-[230px] w-[230px] rounded-full bg-[radial-gradient(circle,#e3a8ff_0,#d9a2ff_28%,rgba(154,107,255,.4)_53%,transparent_70%)] blur-[5px]"
         ></div>
       </section>
 
@@ -163,7 +206,7 @@
           <!-- BROWSE ARTICLES -->
           <button
               type="button"
-              class="flex md:justify-between md:gap-4 md:w-[327px] h-[132px] rounded-[15px] w-12 bg-[#1f1f1f] p-2.5 text-left text-white shadow-lg sm:w-[calc(50%-6px)]"
+              class="flex w-full md:justify-between md:gap-4 md:w-[327px] h-[132px] rounded-[15px] bg-[#1f1f1f] p-2.5 text-left text-white shadow-lg sm:w-[calc(50%-6px)]"
           >
             <div class="flex items-center justify-center">
               <svg
@@ -322,7 +365,7 @@
           <!-- TALK TO AN AGENT -->
           <button
               type="button"
-              class="flex md:justify-between md:gap-4 md:w-[327px] h-[132px] rounded-[15px] w-12 bg-[#1f1f1f] p-2.5 text-left text-white shadow-lg sm:w-[calc(50%-6px)]"
+              class="flex md:justify-between md:gap-4 md:w-[327px] h-[132px] rounded-[15px] w-full bg-[#1f1f1f] p-2.5 text-left text-white shadow-lg sm:w-[calc(50%-6px)]"
           >
             <div class="flex items-center justify-center">
               <svg

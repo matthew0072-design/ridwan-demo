@@ -44,7 +44,7 @@
           <div>
             <button
                 type="button"
-                class="flex cursor-pointer h-[50px] w-[255px] items-center justify-center gap-3 rounded-full border-2 border-white bg-transparent px-8 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/10"
+                class="hidden md:flex cursor-pointer h-[50px] w-[255px] items-center justify-center gap-3 rounded-full border-2 border-white bg-transparent px-8 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/10"
                 @click="openWallet(wallets[0]!)"
             >
               <!-- Wallet icon -->
@@ -77,6 +77,40 @@
               </svg>
 
               <span>Validate Wallet</span>
+            </button>
+            <button
+                type="button"
+                class="md:hidden flex cursor-pointer h-full items-center justify-center gap-3 rounded-full border-2 border-white bg-transparent p-4 text-[16px] font-semibold text-white transition-all duration-200 hover:bg-white/10"
+                @click="openWallet(wallets[0]!)"
+            >
+              <!-- Wallet icon -->
+              <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  class="shrink-0"
+              >
+                <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="3"
+                />
+                <path d="M3 8h15" />
+                <path d="M16 12h5v4h-5a2 2 0 0 1 0-4Z" />
+                <circle
+                    cx="17"
+                    cy="14"
+                    r="0.8"
+                    fill="currentColor"
+                    stroke="none"
+                />
+              </svg>
             </button>
           </div>
         </div>
@@ -129,7 +163,7 @@
                 <img
                     :src="wallet.logo"
                     :alt="`${wallet.name} logo`"
-                    class="h-10 w-10 rounded-full object-contain sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
+                    class="h-full w-full md:h-10 md:w-10 rounded-full object-contain sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
                 />
               </div>
 
