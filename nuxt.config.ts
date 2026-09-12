@@ -9,7 +9,10 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/main.css'
+    '~/assets/css/main.css',
+    '@fontsource/source-sans-pro/400.css',
+    '@fontsource/source-sans-pro/600.css',
+    '@fontsource/source-sans-pro/700.css',
   ],
 
   vite: {

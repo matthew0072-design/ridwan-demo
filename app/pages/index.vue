@@ -5,21 +5,21 @@
     <header class="fixed inset-x-0 top-0 z-50 h-24 md:h-[66px] bg-black">
 
       <!-- ===================================================== -->
-      <!-- MOBILE HEADER — FROM YOUR SECOND VERSION -->
+      <!-- MOBILE HEADER -->
       <!-- ===================================================== -->
 
       <div class="relative mx-auto h-full w-full px-3 lg:hidden">
 
         <!-- MOBILE TOP ROW -->
-        <div class="flex pt-4 h-full">
+        <div class="flex h-[66px] w-full items-center">
 
           <!-- Logo + Brand -->
           <a
               href="#"
-              class="flex shrink-0 no-underline"
+              class="flex min-w-0 flex-1 items-center no-underline"
           >
             <svg
-                class="h-10 w-10 text-white"
+                class="h-[clamp(32px,10vw,40px)] w-[clamp(32px,10vw,40px)] shrink-0 text-white"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
             >
@@ -29,16 +29,18 @@
               />
             </svg>
 
-            <span class="ml-2 whitespace-nowrap text-xl font-normal text-[#a5a8a9]">
-          GitHub Blockchain Support
-        </span>
+            <span
+                class="ml-2 min-w-0 truncate text-[clamp(14px,4.5vw,20px)] font-normal text-[#a5a8a9]"
+            >
+        GitHub Blockchain Support
+      </span>
           </a>
 
           <!-- MOBILE CONNECT -->
           <button
               type="button"
               @click="homeWalletModal"
-              class="ml-auto mr-3 flex pt-1 shrink-0 cursor-pointer text-sm text-white no-underline"
+              class="ml-2 shrink-0 cursor-pointer px-1 text-[clamp(12px,3.5vw,14px)] text-white no-underline"
           >
             Connect
           </button>
@@ -49,22 +51,22 @@
         <!-- MOBILE HAMBURGER -->
         <button
             type="button"
-            class="absolute bottom-4 left-3 pt-14 flex h-7 w-7 items-center justify-center border-0 bg-transparent p-0"
+            class="absolute bottom-3 left-3 flex h-7 w-7 items-center justify-center border-0 bg-transparent p-0"
             @click="mobileMenuOpen = !mobileMenuOpen"
             aria-label="Toggle navigation"
         >
-      <span class="flex flex-col gap-[4px]">
-        <span class="block h-[1px] w-[18px] bg-white"></span>
-        <span class="block h-[1px] w-[18px] bg-white"></span>
-        <span class="block h-[1px] w-[18px] bg-white"></span>
-      </span>
+    <span class="flex flex-col gap-[4px]">
+      <span class="block h-[1px] w-[18px] bg-white"></span>
+      <span class="block h-[1px] w-[18px] bg-white"></span>
+      <span class="block h-[1px] w-[18px] bg-white"></span>
+    </span>
         </button>
 
 
         <!-- MOBILE DROPDOWN -->
         <div
             v-if="mobileMenuOpen"
-            class="absolute left-0 right-0 top-[66px] border-t border-[#222] bg-black px-4 py-3"
+            class="absolute left-0 right-0 top-24 border-t border-[#222] bg-black px-4 py-3"
         >
           <a
               href="javascript:void(0)"
@@ -108,12 +110,13 @@
         <!-- DESKTOP NAVIGATION -->
         <nav class="mr-24 flex items-center">
 
-          <a
-              href="javascript:void(0)"
-              class="flex items-center rounded-[3px] border border-[#eee] px-2.5 py-[15px] text-base text-white no-underline"
+          <button
+
+              @click="openTawkChat()"
+              class="flex items-center cursor-pointer rounded-[3px] border border-[#eee] px-2.5 py-2 text-base text-white no-underline"
           >
             Talk to an Agent
-          </a>
+          </button>
 
           <button
               @click="homeWalletModal"
@@ -134,35 +137,33 @@
       <section
           class="relative overflow-hidden bg-[linear-gradient(105deg,#4d45a9_0%,#41419b_32%,#292b43_62%,#232538_100%)]"
       >
-        <div class="mx-auto w-full max-w-[700px] relative flex justify-center items-center flex-col h-[450px] px-12 md:px-4 pb-[85px] pt-32 md:pt-[42px]">
+        <div class="mx-auto w-full md:max-w-[700px] relative flex justify-center items-center flex-col h-[500px]  pb-[85px] pt-32 md:pt-[42px]">
 
-          <h1 class="text-center text-2xl md:text-[32px] font-bold leading-9 text-white">
+          <h1 class="text-center text-xl md:text-[32px] font-bold px-12 md:px-4 leading-9 pt-16 text-white ">
             Hello, What can we help you with?
           </h1>
 
           <!-- SEARCH -->
           <div
-              class="mx-auto mt-2 flex h-[60px] w-full items-center rounded border border-[#ccc] bg-[#242538]"
+              class="mx-8 mt-2 flex h-[60px] p-3 w-5/6 md:w-full items-center rounded border border-[#ccc] bg-[#242538]"
           >
             <button
                 type="button"
-                class="flex h-full w-[45px] shrink-0 items-center justify-center border-0 bg-transparent"
+                class="flex w-4 h-4 md:h-8 md:w-8 shrink-0 items-center justify-center mr-2 md:mr-6 bg-transparent"
             >
-          <span class="text-[30px] leading-none text-[#aaa]">
-            ⌕
-          </span>
+              <img src="/asset/img/search.svg" alt="search" class="h-full w-full"/>
             </button>
 
             <input
                 type="text"
                 placeholder="Enter the search item here..."
-                class="h-full w-full p-4 md:p-1 border-0 bg-transparent pr-3.5 text-base text-white outline-none placeholder:text-[#888]"
+                class="h-full w-full p-4 md:p-2 border-0 bg-transparent pr-2 md:pr-3.5 text-base md:text-lg text-white outline-none placeholder:text-[#888]"
             />
           </div>
 
           <!-- POPULAR LINKS -->
           <div
-              class="md:mt-14 mt-10 text-center text-base leading-8 text-white md:w-7/8"
+              class="md:mt-14 mt-10 px-2.5 mb-2 md:px-4  text-center text-base leading-8 text-white md:w-7/8"
           >
             Popular Links:
 
@@ -461,7 +462,7 @@
         </div>
 
         <div
-            class="mx-auto mt-4 grid w-full max-w-[1000px] grid-cols-1 gap-x-6 gap-y-4 px-4 sm:grid-cols-2 lg:grid-cols-3"
+            class="mx-auto mt-2 grid w-full max-w-[1000px] grid-cols-1 gap-x-6 gap-y-4 px-4 sm:grid-cols-2 lg:grid-cols-3"
         >
           <a
               v-for="item in articles"
@@ -470,7 +471,7 @@
               class="w-full"
           >
             <article
-                class="flex min-h-[206px] w-full flex-col items-center justify-center rounded-[5px] border border-[#ccc] bg-[rgba(31,33,50,.22)] px-2.5 text-center"
+                class="flex min-h-[206px] w-full flex-col items-center justify-end rounded-[5px] border border-[#ccc] bg-[rgba(31,33,50,.22)] px-10 pb-4 text-center"
             >
 
               <svg
@@ -504,7 +505,7 @@
       >
 
         <div
-            class="mx-auto max-w-[760px]"
+            class="mx-auto max-w-[960px]"
         >
 
           <div class="mb-8 flex items-center justify-between">
@@ -569,45 +570,6 @@
 
     </main>
 
-
-    <!-- CHAT -->
-    <div
-        class="fixed bottom-[50px] right-2 z-40 flex w-[174px] flex-col items-end gap-2 max-[600px]:scale-[.85] max-[600px]:origin-bottom-right"
-    >
-
-      <div
-          class="h-[34px] w-[174px] rounded-[6px_6px_0_0] bg-white px-[10px] py-[11px] text-[9px] text-[#555] shadow-[0_2px_8px_#0005]"
-      >
-        👋 Hi! How can we help?
-      </div>
-
-      <button
-          type="button"
-          class="rounded-[5px] border border-[#48c78e] bg-white px-[10px] py-[6px] text-[9px] text-[#20a86b]"
-      >
-        I have a question
-      </button>
-
-      <button
-          type="button"
-          class="rounded-[5px] border border-[#48c78e] bg-white px-[10px] py-[6px] text-[9px] text-[#20a86b]"
-      >
-        Tell me more
-      </button>
-
-      <div
-          class="relative mt-[5px] grid h-[37px] w-[37px] place-items-center rounded-full bg-[#17b66b] text-[19px]"
-      >
-        👨🏻‍💻
-
-        <i
-            class="absolute -right-px -top-0.5 grid h-3 w-3 place-items-center rounded-full bg-[#d52323] text-[8px] not-italic text-white"
-        >
-          1
-        </i>
-      </div>
-
-    </div>
 
 
     <!-- FOOTER -->
@@ -679,5 +641,9 @@ const faqs = [
   'How can I integrate GitHub with a decentralized application (dApp) for version control?',
   'What are the best practices for securing private keys in a GitHub-hosted blockchain project?'
 ]
-
+const openTawkChat = () => {
+  if (typeof window !== 'undefined' && window.Tawk_API) {
+    window.Tawk_API.maximize()
+  }
+}
 </script>
