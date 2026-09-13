@@ -1,11 +1,12 @@
 <template>
   <div>
     <NuxtPage />
-    <Toast />
+    <Toaster richColors position="bottom-right" />
   </div>
 </template>
-<!-- app/app.vue -->
 <script setup lang="ts">
+import { Toaster } from 'vue-sonner'
+import 'vue-sonner/style.css'
 useHead({
   script: [
     {

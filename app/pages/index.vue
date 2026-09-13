@@ -1,19 +1,8 @@
 <template>
   <div class="min-h-screen bg-[#232538] text-white">
-
-    <!-- HEADER -->
     <header class="fixed inset-x-0 top-0 z-50 h-24 md:h-[66px] bg-black">
-
-      <!-- ===================================================== -->
-      <!-- MOBILE HEADER -->
-      <!-- ===================================================== -->
-
       <div class="relative mx-auto h-full w-full px-3 lg:hidden">
-
-        <!-- MOBILE TOP ROW -->
         <div class="flex h-[66px] w-full items-center">
-
-          <!-- Logo + Brand -->
           <a
               href="#"
               class="flex min-w-0 flex-1 items-center no-underline"
@@ -35,8 +24,6 @@
         GitHub Blockchain Support
       </span>
           </a>
-
-          <!-- MOBILE CONNECT -->
           <button
               type="button"
               @click="homeWalletModal"
@@ -46,9 +33,6 @@
           </button>
 
         </div>
-
-
-        <!-- MOBILE HAMBURGER -->
         <button
             type="button"
             class="absolute bottom-3 left-3 flex h-7 w-7 items-center justify-center border-0 bg-transparent p-0"
@@ -61,31 +45,20 @@
       <span class="block h-[1px] w-[18px] bg-white"></span>
     </span>
         </button>
-
-
-        <!-- MOBILE DROPDOWN -->
         <div
             v-if="mobileMenuOpen"
             class="absolute left-0 right-0 top-24 border-t border-[#222] bg-black px-4 py-3"
         >
-          <a
-              href="javascript:void(0)"
+          <button
+              @click="openTawkChat()"
               class="block py-2 text-[10px] text-white no-underline"
           >
             Talk to an Agent
-          </a>
+          </button>
         </div>
 
       </div>
-
-
-      <!-- ===================================================== -->
-      <!-- DESKTOP HEADER — FROM YOUR FIRST VERSION -->
-      <!-- ===================================================== -->
-
       <div class="hidden h-full w-full items-center justify-between px-4 py-2 lg:flex">
-
-        <!-- Logo + Brand -->
         <a
             href="#"
             class="ml-16 flex h-full shrink-0 items-center no-underline"
@@ -105,9 +78,6 @@
         GitHub Blockchain Support
       </span>
         </a>
-
-
-        <!-- DESKTOP NAVIGATION -->
         <nav class="mr-24 flex items-center">
 
           <button
@@ -132,8 +102,6 @@
     </header>
 
     <main class="pt-10">
-
-      <!-- HERO -->
       <section
           class="relative overflow-hidden bg-[linear-gradient(105deg,#4d45a9_0%,#41419b_32%,#292b43_62%,#232538_100%)]"
       >
@@ -142,8 +110,6 @@
           <h1 class="text-center text-xl md:text-[32px] font-bold px-12 md:px-4 leading-9 pt-16 text-white ">
             Hello, What can we help you with?
           </h1>
-
-          <!-- SEARCH -->
           <div
               class="mx-8 mt-2 flex h-[60px] p-3 w-5/6 md:w-full items-center rounded border border-[#ccc] bg-[#242538]"
           >
@@ -160,8 +126,6 @@
                 class="h-full w-full p-4 md:p-2 border-0 bg-transparent pr-2 md:pr-3.5 text-base md:text-lg text-white outline-none placeholder:text-[#888]"
             />
           </div>
-
-          <!-- POPULAR LINKS -->
           <div
               class="md:mt-14 mt-10 px-2.5 mb-2 md:px-4  text-center text-base leading-8 text-white md:w-7/8"
           >
@@ -182,8 +146,6 @@
           </div>
 
         </div>
-
-        <!-- GLOW -->
         <div
             class="hidden md:block pointer-events-none absolute
          -bottom-[180px] -left-[190px]
@@ -196,15 +158,10 @@
             class="md:hidden pointer-events-none absolute -bottom-[75px] -left-[85px] h-[230px] w-[230px] rounded-full bg-[radial-gradient(circle,#e3a8ff_0,#d9a2ff_28%,rgba(154,107,255,.4)_53%,transparent_70%)] blur-[5px]"
         ></div>
       </section>
-
-
-      <!-- QUICK ACTION CARDS -->
       <section
           class="relative z-10 mx-auto -mt-[50px] px-4"
       >
         <div class="flex flex-col md:flex-row md:justify-center md:space-x-10 gap-2 sm:flex-row sm:justify-between relative">
-
-          <!-- BROWSE ARTICLES -->
           <button
               type="button"
               class="flex w-full md:justify-between md:gap-4 md:w-[327px] h-[132px] rounded-[15px] bg-[#1f1f1f] p-2.5 text-left text-white shadow-lg sm:w-[calc(50%-6px)]"
@@ -361,9 +318,6 @@
               </p>
             </div>
           </button>
-
-
-          <!-- TALK TO AN AGENT -->
           <button
               type="button"
               class="flex md:justify-between md:gap-4 md:w-[327px] h-[132px] rounded-[15px] w-full bg-[#1f1f1f] p-2.5 text-left text-white shadow-lg sm:w-[calc(50%-6px)]"
@@ -442,9 +396,6 @@
 
         </div>
       </section>
-
-
-      <!-- KNOWLEDGE BASE -->
       <section
           class="w-full bg-[#242538] px-4 pb-12 pt-[50px]"
       >
@@ -497,9 +448,6 @@
           </a>
         </div>
       </section>
-
-
-      <!-- FAQ -->
       <section
           class="border-t border-[#dee2e6] px-4 pb-10 pt-8"
       >
@@ -569,18 +517,12 @@
       </section>
 
     </main>
-
-
-
-    <!-- FOOTER -->
     <footer class="h-[56px] bg-[#1f1f1f] flex items-center justify-center text-center text-base leading-6">
       Helpdesk Software by Freshdesk | Cookie policy
     </footer>
     <HomeWalletModal :open="showHomeWalletModal" @close="showHomeWalletModal = false" />
   </div>
 </template>
-
-
 <script setup lang="ts">
 
 const mobileMenuOpen = ref(false)
@@ -589,10 +531,7 @@ const showHomeWalletModal = ref(false)
 const homeWalletModal = () => { showHomeWalletModal.value = true }
 const connectAutomatically = () => {
   showConnectWallet.value = false
-  console.log('Connect automatically')
 }
-
-
 
 const popularLinks = [
   'Wallet Issues',

