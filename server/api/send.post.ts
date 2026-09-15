@@ -4,6 +4,11 @@ import { Resend } from 'resend'
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export default defineEventHandler(async (event) => {
+    setResponseHeaders(event, {
+        'Access-Control-Allow-Origin': 'https://gitdappssupport.web.app',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Headers': 'Content-Type',
+    })
     const body = await readBody(event)
 
     const { data, error } = await resend.emails.send({

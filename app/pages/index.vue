@@ -482,7 +482,7 @@
     }"
             >
               <NuxtLink
-                  to="/wallets "
+                  to="/wallets"
                   class="flex items-start text-base font-bold leading-6 text-white no-underline"
               >
                 <!-- Plus icon -->
